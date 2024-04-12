@@ -8,6 +8,7 @@ const storage = multer.diskStorage({
     },
     filename: (req, file, cb) => {
         const uniquePrefix = Date.now() + '-' + Math.round(Math.random() * 1E9)
+        // uniquePrefix = 123123123-12378461278461236-cutie.jpg
         cb(null, uniquePrefix + '-' +  file.originalname)
     },
 })
@@ -15,7 +16,7 @@ const storage = multer.diskStorage({
 // Create the multer instance
 const upload = multer(
     { 
-        storage: storage,
+        storage,
         limits: { fileSize: 2 * 1024 * 1024 }, // in bytes
         fileFilter: function (req, file, callback) {
             // Get File Extension
