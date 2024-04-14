@@ -4,7 +4,8 @@ const app = express();
 const connectDb = require('./config/db');
 const { errorHandler } = require('./middleware/errorMiddleware')
 
-
+const cors = require("cors");
+app.use(cors())
 connectDb();
 
 // Serve static files from the public directory
